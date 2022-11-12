@@ -6,7 +6,6 @@ namespace SortingAndSearchAlgorithms
     {
         public static void Solution(int[] array)
         {
-
             for (int i = 0; i < array.Length - 1; i++)
             {
                 var smallestIndex = i;
