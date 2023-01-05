@@ -8,16 +8,14 @@ namespace SortingAndSearchAlgorithms
         {
             for (int i = 1; i < array.Length; i++)
             {
-                var num = array[i];
-                var j = i - 1;
-
-                while (j >= 0 && array[j] > num)
+                var current = array[i];
+                int j;
+                for (j = i - 1; j >= 0 && current < array[j]; j--)
                 {
                     array[j + 1] = array[j];
-                    j--;
                 }
 
-                array[j + 1] = num;
+                array[j + 1] = current;
             }
         }
     }

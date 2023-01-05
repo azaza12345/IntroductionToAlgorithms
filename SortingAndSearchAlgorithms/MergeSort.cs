@@ -10,12 +10,12 @@ namespace SortingAndSearchAlgorithms
         private static void Helper(int[] array, int start, int end)
         {
             if (start >= end) return;
-            
-            int mid = start + (end - start) / 2;
-            
+
+            var mid = start + (end - start) / 2;
+
             Helper(array, start, mid);
             Helper(array, mid + 1, end);
-            
+
             Merge(array, start, mid, end);
         }
 
@@ -24,48 +24,50 @@ namespace SortingAndSearchAlgorithms
             var n = mid - start + 1;
             var m = end - mid;
 
-            var arr1 = new int[n];
-            var arr2 = new int[m];
+            var a1 = new int[n];
+            var a2 = new int[m];
 
-            int i, j;
- 
-            for (i = 0; i < n; ++i)
-                arr1[i] = array[start + i];
-            for (j = 0; j < m; ++j)
-                arr2[j] = array[mid + 1 + j];
-
-            i = 0;
-            j = 0;
-            
-            var k = start;
-            while (i < n && j < m)
+            for (int i = 0; i < a1.Length; i++)
             {
-                if (arr1[i] <= arr2[j])
+                a1[i] = array[start + i];
+            }
+
+            for (int i = 0; i < a2.Length; i++)
+            {
+                a2[i] = array[mid + i + 1];
+            }
+
+            var k = 0;
+            var l = 0;
+            var s = start;
+            while (k < a1.Length && l < a2.Length)
+            {
+                if (a1[k] < a2[l])
                 {
-                    array[k] = arr1[i];
-                    i++;
+                    array[s] = a1[k];
+                    k++;
                 }
                 else
                 {
-                    array[k] = arr2[j];
-                    j++;
+                    array[s] = a2[l];
+                    l++;
                 }
-
-                k++;
+                
+                s++;
             }
 
-            while (i < n)
+            while (k < a1.Length)
             {
-                array[k] = arr1[i];
-                i++;
+                array[s] = a1[k];
+                s++;
                 k++;
             }
             
-            while (j < m)
+            while (l < a2.Length)
             {
-                array[k] = arr2[j];
-                j++;
-                k++;
+                array[s] = a2[l];
+                s++;
+                l++;
             }
         }
     }

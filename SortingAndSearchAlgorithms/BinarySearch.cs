@@ -11,13 +11,16 @@
             {
                 var middle = (left + right) / 2;
 
-                if (array[middle] == target)
-                    return middle;
+                if (array[middle] == target) return middle;
 
                 if (array[middle] < target)
+                {
                     left = middle + 1;
+                }
                 else
+                {
                     right = middle - 1;
+                }
             }
 
             return -1;
@@ -31,16 +34,16 @@
 
         private static int Helper(int[] array, int target, int left, int right)
         {
-            if (left > right) return -1;
-            var middle = (left + right) / 2;
+            if (right < left) return -1;
 
-            if (array[middle] == target)
-                return middle;
+            var middle = (right + left) / 2;
+            
+            if (array[middle] == target) return middle;
 
             if (array[middle] < target)
                 return Helper(array, target, middle + 1, right);
-            else
-                return Helper(array, target, left, middle - 1);
+            
+            return Helper(array, target, left, middle - 1);
         }
     }
 }

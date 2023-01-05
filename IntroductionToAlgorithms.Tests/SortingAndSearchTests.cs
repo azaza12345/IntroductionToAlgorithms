@@ -91,5 +91,22 @@ namespace IntroductionToAlgorithms.Tests
             // Assert
             Assert.Equal(result, array);
         }
+        
+        [Theory]
+        [InlineData(new[] { 5, 4}, new[] {4, 5})]
+        [InlineData(new[] { 12, 5, 7}, new[] {5, 7, 12})]
+        [InlineData(new[] { 0, 1, -1}, new[] {-1, 0, 1})]
+        [InlineData(new[] { 2, 1, 4, 3}, new[] {1, 2, 3, 4})]
+        [InlineData(new[] { 9, 8, 7, 6, 5}, new[] {5, 6, 7, 8, 9})]
+        public void QuickSortTest(int[] array, int[] result)
+        {
+            // Arrange
+            
+            // Act
+            QuickSort.Solution(array);
+            
+            // Assert
+            Assert.Equal(result, array);
+        }
     }
 }

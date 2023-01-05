@@ -6,18 +6,19 @@ namespace SortingAndSearchAlgorithms
     {
         public static void Solution(int[] array)
         {
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                var smallestIndex = i;
+                var indexOfSmallest = i;
+                
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (array[j] < array[smallestIndex])
+                    if (array[j] < array[indexOfSmallest])
                     {
-                        smallestIndex = j;
+                        indexOfSmallest = j;
                     }
                 }
 
-                (array[i], array[smallestIndex]) = (array[smallestIndex], array[i]);
+                (array[i], array[indexOfSmallest]) = (array[indexOfSmallest], array[i]);
             }
         }
     }
